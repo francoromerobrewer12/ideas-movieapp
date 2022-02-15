@@ -78,7 +78,7 @@ function Navbar() {
       <MenuItem>
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
           <Badge badgeContent={4} color="error">
-            <Typography>hola</Typography>
+            <FontAwesomeIcon icon={faBell} />
           </Badge>
         </IconButton>
         <p>Messages</p>
@@ -90,7 +90,7 @@ function Navbar() {
           color="inherit"
         >
           <Badge badgeContent={17} color="error">
-            <Typography>hola</Typography>
+            <FontAwesomeIcon icon={faBell} />
           </Badge>
         </IconButton>
         <p>Notifications</p>
@@ -103,7 +103,7 @@ function Navbar() {
           aria-haspopup="true"
           color="inherit"
         >
-          <Typography>hola</Typography>
+          <FontAwesomeIcon icon={faBell} />
         </IconButton>
         <p>Profile</p>
       </MenuItem>
@@ -112,10 +112,13 @@ function Navbar() {
 
   return (
     <Box sx={{ flexGrow: 1, mt: { xs: "none", sm: 5 } }}>
-      <AppBar position="static">
+      <AppBar
+        position="static"
+        sx={{ bgcolor: "transparent", color: "black", boxShadow: "none" }}
+      >
         <Toolbar>
-          <Typography variant="h6" noWrap component="div" sx={{ mr: 2 }}>
-            Popflix
+          <Typography variant="h5" noWrap component="div" sx={{ mr: 2 }}>
+            Popflixs
           </Typography>
           <Typography
             variant="h6"

@@ -1,5 +1,4 @@
 import Head from "next/head";
-import { Typography } from "@mui/material";
 
 import Navbar from "../components/Navbar/Navbar.jsx";
 
