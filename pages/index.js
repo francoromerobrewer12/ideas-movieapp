@@ -4,6 +4,7 @@ import Head from "next/head";
 
 import Navbar from "../components/Navbar/Navbar.jsx";
 import MovieCard from "../components/MovieCard/MovieCard.jsx";
+import MovieList from "../components/MovieList/MovieList.jsx";
 
 export default function Home() {
   return (
@@ -15,12 +16,12 @@ export default function Home() {
 
       <Container maxWidth="xxl">
         <Navbar />
-        <Box sx={{ display: "flex", height: "80vh", width: "100%" }}>
+        <Box sx={{ display: "flex", height: "85vh", width: "100%" }}>
           <Box sx={{ width: "80%", px: 3 }}>
             <div>hola</div>
           </Box>
           <Box sx={{ width: "20%" }}>
-            <MovieCard />
+            <MovieList />
           </Box>
         </Box>
       </Container>

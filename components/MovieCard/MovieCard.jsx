@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlayCircle, faStar } from "@fortawesome/free-solid-svg-icons";
 import { Box } from "@mui/system";
 
-function MovieCard() {
+function MovieCard({ title, reviews, year }) {
   const [active, setActive] = useState(false);
 
   function handleMouseOver() {
@@ -23,10 +23,11 @@ function MovieCard() {
         flexDirection: "column",
         p: 1,
         alignItems: "center",
-        height: 200,
+        maxHeight: 160,
         flexGrow: 1,
         textAlign: "center",
         position: "relative",
+        borderRadius: 2,
       }}
       onMouseOver={handleMouseOver}
       onMouseLeave={handleMouseOut}
@@ -66,7 +67,7 @@ function MovieCard() {
             justifyContent: "center",
           }}
         >
-          <Typography variant="h6">THE KINGS ARMY</Typography>
+          <Typography variant="h6">{title}</Typography>
         </CardContent>
       </CardContent>
 
@@ -99,7 +100,7 @@ function MovieCard() {
           >
             <FontAwesomeIcon icon={faPlayCircle} size="xl" />
             <Typography variant="h6" sx={{ ml: 2 }}>
-              THE KINGS ARMY
+              {title}
             </Typography>
           </Box>
           <Box
@@ -112,10 +113,10 @@ function MovieCard() {
             <Box sx={{ display: "flex", alignItems: "center", pl: 0.5 }}>
               <FontAwesomeIcon icon={faStar} size="md" />
               <Typography variant="h6" sx={{ ml: 2.5 }}>
-                7.2
+                {reviews}
               </Typography>
             </Box>
-            <Typography variant="h6">2021</Typography>
+            <Typography variant="h6">{year}</Typography>
           </Box>
         </CardContent>
       </CardContent>
