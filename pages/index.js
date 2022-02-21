@@ -1,10 +1,12 @@
-import { Container } from "@mui/material";
-import { Box } from "@mui/system";
 import Head from "next/head";
+import { Box } from "@mui/system";
+import { Button, Container, Typography } from "@mui/material";
 
 import Navbar from "../components/Navbar/Navbar.jsx";
-import MovieCard from "../components/MovieCard/MovieCard.jsx";
 import MovieList from "../components/MovieList/MovieList.jsx";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlay, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 export default function Home() {
   return (
@@ -17,8 +19,37 @@ export default function Home() {
       <Container maxWidth="xxl">
         <Navbar />
         <Box sx={{ display: "flex", height: "85vh", width: "100%" }}>
-          <Box sx={{ width: "80%", px: 3 }}>
-            <div>hola</div>
+          <Box
+            sx={{
+              width: "80%",
+              px: 3,
+              position: "relative",
+            }}
+          >
+            <Box sx={{ position: "absolute", top: "50%" }}>
+              <Typography variant="h6">POPFLIX ORIGINAL</Typography>
+              <Typography variant="h1">THE KINGS ARMY</Typography>
+              <Box sx={{ display: "flex", mt: 3 }}>
+                <Button
+                  variant="contained"
+                  size="large"
+                  color="primary"
+                  sx={{ px: 5 }}
+                  startIcon={<FontAwesomeIcon icon={faPlay} />}
+                >
+                  WATCH NOW
+                </Button>
+                <Button
+                  variant="outlined"
+                  size="large"
+                  color="primary"
+                  sx={{ px: 5, ml: 2 }}
+                  startIcon={<FontAwesomeIcon icon={faPlus} />}
+                >
+                  MY PLAYLIST
+                </Button>
+              </Box>
+            </Box>
           </Box>
           <Box sx={{ width: "20%" }}>
             <MovieList />
