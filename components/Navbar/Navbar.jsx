@@ -110,7 +110,7 @@ function Navbar() {
   );
 
   return (
-    <Box sx={{ flexGrow: 1, mt: { xs: "none", sm: 5 } }}>
+    <Box sx={{ flexGrow: 1, mt: 5 }}>
       <AppBar
         position="static"
         sx={{ bgcolor: "transparent", color: "black", boxShadow: "none" }}

@@ -31,11 +31,10 @@ function MovieList() {
     <Box
       sx={{
         height: "100%",
-        width: "100%",
+        width: ["90%", "60%", "100%"],
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-around",
-        bgcolor: "red",
       }}
     >
       {movies.map(({ title, year, reviews }) => (

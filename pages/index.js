@@ -18,18 +18,33 @@ export default function Home() {
 
       <Container maxWidth="xxl">
         <Navbar />
-        <Box sx={{ display: "flex", height: "85vh", width: "100%" }}>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: ["column", "column", "row"],
+            minHeight: "85vh",
+            width: "100%",
+          }}
+        >
           <Box
             sx={{
-              width: "80%",
+              width: ["100%", "100%", "80%"],
               px: 3,
-              position: "relative",
+              display: "flex",
+              marginTop: ["50px", "50px", 0],
+              paddingBottom: ["50px", "100px"],
             }}
           >
-            <Box sx={{ position: "absolute", top: "50%" }}>
+            <Box sx={{ alignSelf: "flex-end" }}>
               <Typography variant="h6">POPFLIX ORIGINAL</Typography>
               <Typography variant="h1">THE KINGS ARMY</Typography>
-              <Box sx={{ display: "flex", mt: 3 }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: ["column", "row"],
+                  mt: 3,
+                }}
+              >
                 <Button
                   variant="contained"
                   size="large"
@@ -43,7 +58,7 @@ export default function Home() {
                   variant="outlined"
                   size="large"
                   color="primary"
-                  sx={{ px: 5, ml: 2 }}
+                  sx={{ px: 5, ml: [0, 2], mt: [2, 0] }}
                   startIcon={<FontAwesomeIcon icon={faPlus} />}
                 >
                   MY PLAYLIST
@@ -51,7 +66,15 @@ export default function Home() {
               </Box>
             </Box>
           </Box>
-          <Box sx={{ width: "20%" }}>
+          <Box
+            sx={{
+              width: ["100%", "100%", "20%"],
+              minWidth: "300px",
+              minHeight: "65vh",
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
             <MovieList />
           </Box>
         </Box>
