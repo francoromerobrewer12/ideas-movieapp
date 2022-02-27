@@ -3,7 +3,7 @@ import { Box, typography } from "@mui/system";
 import React from "react";
 import MovieCard from "../MovieCard/MovieCard";
 
-function MovieList({ popularMovies }) {
+function MovieList({ popularMovies, baseUrl }) {
   return (
     <Box
       sx={{
@@ -14,13 +14,8 @@ function MovieList({ popularMovies }) {
         justifyContent: "space-around",
       }}
     >
-      {popularMovies.map(({ id, title, release_date, vote_average }) => (
-        <MovieCard
-          key={id}
-          title={title}
-          year={release_date}
-          reviews={vote_average}
-        />
+      {popularMovies.map((movie) => (
+        <MovieCard key={movie.id} movie={movie} baseUrl={baseUrl} />
       ))}
     </Box>
   );

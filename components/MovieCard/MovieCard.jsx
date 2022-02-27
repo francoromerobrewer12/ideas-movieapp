@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 
 import { Card, CardContent, Typography } from "@mui/material";
+import { grey } from "@mui/material/colors";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlayCircle, faStar } from "@fortawesome/free-solid-svg-icons";
 import { Box } from "@mui/system";
+import Image from "next/image";
 
-function MovieCard({ title, reviews, year }) {
+function MovieCard({ movie, baseUrl }) {
   const [active, setActive] = useState(false);
+  const hoverColorBackground = grey[900];
 
   function handleMouseOver() {
     setActive(true);
@@ -31,10 +34,17 @@ function MovieCard({ title, reviews, year }) {
         position: "relative",
         borderRadius: 2,
         cursor: "pointer",
+        color: "white",
       }}
       onMouseOver={handleMouseOver}
       onMouseLeave={handleMouseOut}
     >
+      <img
+        src={`${baseUrl}/w500${movie.poster_path}`}
+        alt={movie.title}
+        style={{ position: "absolute", top: 0, left: 0 }}
+      />
+
       {/* -------- Normal View of the Movie Card --------*/}
       <CardContent
         sx={{
@@ -70,7 +80,7 @@ function MovieCard({ title, reviews, year }) {
             justifyContent: "center",
           }}
         >
-          <Typography variant="h6">{title}</Typography>
+          <Typography variant="h6">{movie.title}</Typography>
         </CardContent>
       </CardContent>
 
@@ -92,6 +102,7 @@ function MovieCard({ title, reviews, year }) {
             display: "flex",
             flexDirection: "column",
             justifyContent: "flex-end",
+            bgcolor: hoverColorBackground,
           }}
         >
           <Box
@@ -103,7 +114,7 @@ function MovieCard({ title, reviews, year }) {
           >
             <FontAwesomeIcon icon={faPlayCircle} size="xl" />
             <Typography variant="h6" sx={{ ml: 2 }}>
-              {title}
+              {movie.title}
             </Typography>
           </Box>
           <Box
@@ -122,10 +133,12 @@ function MovieCard({ title, reviews, year }) {
             >
               <FontAwesomeIcon icon={faStar} size="1x" />
               <Typography variant="h6" sx={{ ml: 2.5 }}>
-                {reviews}
+                {movie.vote_average}
               </Typography>
             </Box>
-            <Typography variant="h6">{year.substring(0, 4)}</Typography>
+            <Typography variant="h6">
+              {movie.release_date.substring(0, 4)}
+            </Typography>
           </Box>
         </CardContent>
       </CardContent>
