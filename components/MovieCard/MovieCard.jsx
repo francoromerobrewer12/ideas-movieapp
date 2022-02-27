@@ -30,6 +30,7 @@ function MovieCard({ title, reviews, year }) {
         textAlign: "center",
         position: "relative",
         borderRadius: 2,
+        cursor: "pointer",
       }}
       onMouseOver={handleMouseOver}
       onMouseLeave={handleMouseOut}
@@ -112,13 +113,19 @@ function MovieCard({ title, reviews, year }) {
               justifyContent: "space-between",
             }}
           >
-            <Box sx={{ display: "flex", alignItems: "center", pl: 0.5 }}>
-              <FontAwesomeIcon icon={faStar} size="md" />
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                pl: 0.5,
+              }}
+            >
+              <FontAwesomeIcon icon={faStar} size="1x" />
               <Typography variant="h6" sx={{ ml: 2.5 }}>
                 {reviews}
               </Typography>
             </Box>
-            <Typography variant="h6">{year}</Typography>
+            <Typography variant="h6">{year.substring(0, 4)}</Typography>
           </Box>
         </CardContent>
       </CardContent>

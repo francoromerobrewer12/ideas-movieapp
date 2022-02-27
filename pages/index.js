@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { useEffect, useState } from "react";
 import { Box } from "@mui/system";
 import { Button, Container, Typography } from "@mui/material";
 
@@ -7,8 +8,36 @@ import MovieList from "../components/MovieList/MovieList.jsx";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay, faPlus } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
 
 export default function Home() {
+  const [topMovie, setTopMovie] = useState({});
+  const [popularMovies, setPopularMovies] = useState([]);
+  const [baseUrl, setBaseUrl] = useState("");
+  const apiKey = "d1ffffb865607a9bf4e9ba37ee53f9c4";
+
+  useEffect(() => {
+    async function getData() {
+      try {
+        const movies = await (
+          await axios.get(
+            "https://api.themoviedb.org/3/movie/now_playing?api_key=6f26fd536dd6192ec8a57e94141f8b20"
+          )
+        ).data.results;
+        const imagesData = await axios.get(
+          "https://api.themoviedb.org/3/configuration?api_key=d1ffffb865607a9bf4e9ba37ee53f9c4"
+        );
+        setBaseUrl(imagesData.data.images.base_url);
+        setTopMovie(movies[0]);
+        setPopularMovies(movies.slice(1, 5));
+        console.log(topMovie);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    getData();
+  }, []);
+
   return (
     <div className="app-container">
       <Head>
@@ -37,7 +66,7 @@ export default function Home() {
           >
             <Box sx={{ alignSelf: "flex-end" }}>
               <Typography variant="h6">POPFLIX ORIGINAL</Typography>
-              <Typography variant="h1">THE KINGS ARMY</Typography>
+              <Typography variant="h1">{topMovie.title}</Typography>
               <Box
                 sx={{
                   display: "flex",
@@ -75,7 +104,7 @@ export default function Home() {
               justifyContent: "center",
             }}
           >
-            <MovieList />
+            <MovieList popularMovies={popularMovies} />
           </Box>
         </Box>
       </Container>
