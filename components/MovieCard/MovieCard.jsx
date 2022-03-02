@@ -6,7 +6,6 @@ import { grey } from "@mui/material/colors";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlayCircle, faStar } from "@fortawesome/free-solid-svg-icons";
 import { Box } from "@mui/system";
-import Image from "next/image";
 
 function MovieCard({ movie, baseUrl }) {
   const [active, setActive] = useState(false);
@@ -80,7 +79,9 @@ function MovieCard({ movie, baseUrl }) {
             justifyContent: "center",
           }}
         >
-          <Typography variant="h6">{movie.title}</Typography>
+          <Typography variant="h6" sx={{ fontFamily: "Bebas Neue" }}>
+            {movie.title}
+          </Typography>
         </CardContent>
       </CardContent>
 
@@ -112,8 +113,8 @@ function MovieCard({ movie, baseUrl }) {
               alignItems: "center",
             }}
           >
-            <FontAwesomeIcon icon={faPlayCircle} size="xl" />
-            <Typography variant="h6" sx={{ ml: 2 }}>
+            <FontAwesomeIcon icon={faPlayCircle} size="xl" color="#66ffb3" />
+            <Typography variant="h6" sx={{ ml: 2, fontFamily: "Bebas Neue" }}>
               {movie.title}
             </Typography>
           </Box>
@@ -132,11 +133,14 @@ function MovieCard({ movie, baseUrl }) {
               }}
             >
               <FontAwesomeIcon icon={faStar} size="1x" />
-              <Typography variant="h6" sx={{ ml: 2.5 }}>
+              <Typography
+                variant="h6"
+                sx={{ ml: 2.5, fontFamily: "Bebas Neue" }}
+              >
                 {movie.vote_average}
               </Typography>
             </Box>
-            <Typography variant="h6">
+            <Typography variant="h6" sx={{ fontFamily: "Bebas Neue" }}>
               {movie.release_date.substring(0, 4)}
             </Typography>
           </Box>

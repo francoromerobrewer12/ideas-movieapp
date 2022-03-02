@@ -116,14 +116,22 @@ function Navbar() {
         sx={{ bgcolor: "transparent", color: "black", boxShadow: "none" }}
       >
         <Toolbar>
-          <Typography variant="h5" noWrap component="div" sx={{ mr: 2 }}>
+          <Typography
+            variant="h5"
+            noWrap
+            component="div"
+            sx={{ mr: 2, fontFamily: "Bebas Neue", color: "#66ffb3" }}
+          >
             Popflixs
           </Typography>
           <Typography
             variant="h6"
             noWrap
             component="div"
-            sx={{ display: { xs: "none", sm: "block" }, mr: 2 }}
+            sx={{
+              display: { xs: "none", sm: "block", fontFamily: "Bebas Neue" },
+              mr: 2,
+            }}
           >
             Add Movie
           </Typography>
