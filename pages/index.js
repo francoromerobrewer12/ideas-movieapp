@@ -1,7 +1,10 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import { Box } from "@mui/system";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import { Button, Container, Typography } from "@mui/material";
+
+import { useTheme } from "@mui/material/styles";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import Navbar from "../components/Navbar/Navbar.jsx";
@@ -52,11 +55,11 @@ export default function Home() {
       try {
         const movies = await (
           await axios.get(
-            "https://api.themoviedb.org/3/movie/now_playing?api_key=6f26fd536dd6192ec8a57e94141f8b20"
+            `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}`
           )
         ).data.results;
         const imagesData = await axios.get(
-          "https://api.themoviedb.org/3/configuration?api_key=d1ffffb865607a9bf4e9ba37ee53f9c4"
+          `https://api.themoviedb.org/3/configuration?api_key=${apiKey}`
         );
         setBaseUrl(imagesData.data.images.base_url);
         setTopMovie(movies[0]);
@@ -67,6 +70,10 @@ export default function Home() {
     }
     getData();
   }, []);
+
+  function handleNavbarClick() {
+    setListOpen(!isListOpen);
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -93,7 +100,7 @@ export default function Home() {
         />
 
         <Container maxWidth="xxl">
-          <Navbar />
+          <Navbar onClick={handleNavbarClick} />
           <Box
             sx={{
               display: "flex",
@@ -104,7 +111,7 @@ export default function Home() {
           >
             <Box
               sx={{
-                width: ["100%", "100%", "80%"],
+                width: ["100%", "100%", "70%"],
                 px: 3,
                 display: "flex",
                 marginTop: ["200px", "200px", "50px", 0],
@@ -157,14 +164,15 @@ export default function Home() {
                 </Box>
               </Box>
             </Box>
+
             <Box
               sx={{
-                width: ["100%", "100%", "20%"],
-                minWidth: "300px",
+                width: ["100%", "100%", "30%"],
                 minHeight: "65vh",
-                marginTop: ["30vh", "40vh", 0, 0],
+                paddingTop: ["20vh", 0],
+                paddingBottom: ["10vh", 0],
                 display: "flex",
-                justifyContent: "center",
+                justifyContent: ["center", "center", "flex-end"],
               }}
             >
               <MovieList popularMovies={popularMovies} baseUrl={baseUrl} />

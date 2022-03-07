@@ -8,10 +8,12 @@ function MovieList({ popularMovies, baseUrl }) {
     <Box
       sx={{
         height: "100%",
-        width: ["90%", "60%", "100%"],
+        width: "100%",
+        maxWidth: "400px",
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-around",
+        alignItems: "center",
       }}
     >
       {popularMovies.map((movie) => (

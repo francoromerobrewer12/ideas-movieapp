@@ -1,15 +1,12 @@
-import React, { useState } from "react";
-import { styled, alpha } from "@mui/material/styles";
+import React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
 import { Avatar, Badge, MenuItem } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBarsStaggered } from "@fortawesome/free-solid-svg-icons";
-import { faBell } from "@fortawesome/free-solid-svg-icons";
 
 function Navbar() {
   return (
@@ -23,9 +20,14 @@ function Navbar() {
             variant="h5"
             noWrap
             component="div"
-            sx={{ mr: 2, fontFamily: "Bebas Neue", color: "#66ffb3" }}
+            sx={{
+              mr: 2,
+              fontFamily: "Bebas Neue",
+              color: "#66ffb3",
+              cursor: "pointer",
+            }}
           >
-            Popflixs
+            Popflix
           </Typography>
 
           <Box sx={{ flexGrow: 1 }} />
@@ -35,6 +37,7 @@ function Navbar() {
               edge="start"
               color="inherit"
               aria-label="open drawer"
+              sx={{ cursor: "pointer" }}
             >
               <FontAwesomeIcon icon={faBarsStaggered} color="#66ffb3" />
             </IconButton>
